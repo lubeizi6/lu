@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>振兴实业 - 惊蛰廉洁提醒</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #f0f7fa 0%, #e0eef5 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 20px;
+            position: relative;
+            background: linear-gradient(to right, #1a6985, #3a89a5);
+            color: white;
+        }
+
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            border: 2px solid white;
+            padding: 5px 15px;
+            border-radius: 5px;
+        }
+
+        .title {
+            font-size: 36px;
+            margin-bottom: 15px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .subtitle {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+
+        .date-info {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+
+        .main-content {
+            padding: 30px;
+        }
+
+        .intro {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: rgba(26, 105, 133, 0.1);
+            border-radius: 8px;
+        }
+
+        .intro p {
+            font-size: 17px;
+            color: #444;
+        }
+
+        .quote {
+            font-size: 22px;
+            font-weight: bold;
+            color: #1a6985;
+            text-align: center;
+            margin: 20px 0;
+            font-style: italic;
+        }
+
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border-left: 4px solid #1a6985;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .card h3 {
+            color: #1a6985;
+            margin-bottom: 15px;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .card h3::before {
+            content: '⚡';
+            margin-right: 10px;
+            font-size: 18px;
+        }
+
+        .card p {
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .highlight {
+            background: rgba(26, 105, 133, 0.1);
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 15px;
+            color: #1a6985;
+            font-weight: 500;
+        }
+
+        .signature {
+            text-align: right;
+            margin-top: 40px;
+            font-weight: bold;
+            color: #1a6985;
+        }
+
+        .current-date {
+            text-align: right;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #1a6985;
+            color: white;
+        }
+
+        .thunder-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .thunder {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.7);
+            box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.7);
+            animation: thunder 15s infinite;
+            opacity: 0;
+        }
+
+        @keyframes thunder {
+            0% { opacity: 0; }
+            2% { opacity: 0.8; }
+            3% { opacity: 0; }
+            6% { opacity: 0.2; }
+            7% { opacity: 0; }
+            100% { opacity: 0; }
+        }
+
+        @media (max-width: 768px) {
+            .title {
+                font-size: 28px;
+            }
+            
+            .card-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .date-info {
+                position: static;
+                margin: 10px auto;
+                display: inline-block;
+            }
+            
+            header {
+                padding: 20px 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="thunder-animation" id="thunderContainer"></div>
+    
+    <div class="container">
+        <header>
+            <div class="date-info">2025年3月5日 惊蛰</div>
+            <div class="logo-container">
+                <div class="logo">振兴实业</div>
+            </div>
+            <h1 class="title">惊蛰廉洁提醒</h1>
+            <p class="subtitle">春雷惊蛰 · 廉洁自醒 · 实业振兴</p>
+        </header>
+
+        <div class="main-content">
+            <div class="intro">
+                <p>尊敬的振兴实业全体员工：</p>
+                <p>今日惊蛰，春雷始鸣，万物复苏。惊蛰是二十四节气中的第三个节气，标志着春季的开始，也预示着新一年工作的全面展开。</p>
+                <p>值此惊蛰时节，党群纪检部特向全体员工发出廉洁从业提醒，愿以春雷之声警醒我们，以廉洁之心推动企业高质量发展。</p>
+            </div>
+
+            <div class="quote">
+                "惊蛰雷动，警钟长鸣；振兴实业，清廉为先"
+            </div>
+
+            <div class="card-container">
+                <div class="card">
+                    <h3>春雷警醒</h3>
+                    <p>惊蛰时节，春雷始鸣，唤醒蛰伏的生命。振兴实业全体员工应以春雷为警，常怀敬畏之心，守住廉洁底线。</p>
+                    <div class="highlight">提醒：严守企业规章制度，遵守国家法律法规，不触碰廉洁红线。</div>
+                </div>
+
+                <div class="card">
+                    <h3>万物复苏</h3>
+                    <p>惊蛰过后，大地回春，万物复苏。振兴实业企业风气清明如春，激发企业蓬勃生机，推动高质量发展。</p>
+                    <div class="highlight">提醒：弘扬清风正气，营造风清气正的企业环境，共同推动企业健康发展。</div>
+                </div>
+
+                <div class="card">
+                    <h3>除害兴利</h3>
+                    <p>惊蛰时节，农事始忙，除虫防害。振兴实业廉政建设常抓不懈，铲除腐败，守护企业清廉文化。</p>
+                    <div class="highlight">提醒：防微杜渐、警钟长鸣，发现问题及时报告，共同维护企业廉洁环境。</div>
+                </div>
+
+                <div class="card">
+                    <h3>春耕实业</h3>
+                    <p>惊蛰时节，春耕始动，播种希望。振兴实业全体员工廉洁从业，勤勉务实，为企业谋发展，为自己谋进步。</p>
+                    <div class="highlight">提醒：勤勉敬业、务实高效、廉洁奉公，在本职岗位上贡献力量。</div>
+                </div>
+
+                <div class="card">
+                    <h3>风清气正</h3>
+                    <p>惊蛰时节，春风拂面，气候渐暖。振兴实业以清廉之风正己正人，以浩然正气养心养德，树立良好企业形象。</p>
+                    <div class="highlight">提醒：涵养清廉文化，树立良好家风，做廉洁自律的表率。</div>
+                </div>
+
+                <div class="card">
+                    <h3>雷霆之势</h3>
+                    <p>惊蛰雷动，震慑万物。振兴实业反腐倡廉如雷霆之势，不留情面，不存侥幸，坚决惩治各类违纪违规行为。</p>
+                    <div class="highlight">提醒：强化监督执纪，形成震慑效应，共同维护企业廉洁生态。</div>
+                </div>
+            </div>
+
+            <div class="signature">
+                <p>振兴实业党群纪检部</p>
+                <p class="current-date">2025年3月5日</p>
+            </div>
+        </div>
+
+        <footer>
+            <p>惊蛰雷动，警钟长鸣，让清廉之风吹遍振兴实业每个角落</p>
+            <p>© 2025 振兴实业党群纪检部</p>
+        </footer>
+    </div>
+
+    <script>
+        // 创建闪电效果
+        function createThunder() {
+            const container = document.getElementById('thunderContainer');
+            const thunder = document.createElement('div');
+            thunder.className = 'thunder';
+            
+            // 随机位置和大小
+            const size = Math.random() * 100 + 50;
+            const top = Math.random() * 100;
+            const left = Math.random() * 100;
+            
+            thunder.style.width = size + 'px';
+            thunder.style.height = size + 'px';
+            thunder.style.top = top + '%';
+            thunder.style.left = left + '%';
+            thunder.style.animationDelay = Math.random() * 10 + 's';
+            
+            container.appendChild(thunder);
+            
+            // 移除元素以避免内存泄漏
+            setTimeout(() => {
+                thunder.remove();
+            }, 15000);
+        }
+
+        // 更新当前日期
+        function updateCurrentDate() {
+            const dateElements = document.querySelectorAll('.current-date');
+            const now = new Date();
+            const year = now.getFullYear();
+            const month = now.getMonth() + 1;
+            const day = now.getDate();
+            const dateString = `${year}年${month}月${day}日`;
+            
+            dateElements.forEach(element => {
+                element.textContent = dateString;
+            });
+        }
+
+        // 初始创建几个闪电
+        for (let i = 0; i < 5; i++) {
+            createThunder();
+        }
+
+        // 定期创建新闪电
+        setInterval(createThunder, 5000);
+        
+        // 更新日期
+        updateCurrentDate();
+    </script>
+</body>
+</html>
